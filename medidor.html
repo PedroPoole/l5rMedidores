@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .slidecontainer {
+            width: 100%;
+        }
+
+        .rojo{
+            background: rgb(183, 69, 32) !important;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 25px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #04AA6D;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #04AA6D;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Contadores</h1>
+
+    <h3>Aguante</h3>
+    <div class="slidecontainer">
+        <p>Aguante Máximo:</p>
+        <input type="number" value="5">
+        <input type="range" min="0" max="20" value="5" class="slider" id="aguante"oninput="mostrar(this)">
+        <p>Totales</p>
+    </div>
+
+    <h3>Compostura</h3>
+    <div class="slidecontainer">
+        <p>Compostura Máxima:</p>
+        <input type="number" value="5">
+        <input type="range" min="0" max="20" value="5" class="slider" id="compostura" oninput="mostrar(this)">
+        <p>Totales</p>
+    </div>
+
+    <script>
+
+
+
+
+
+        function mostrar(element) {
+            element.nextSibling.nextSibling.innerHTML = "Total: " + element.value + "/" + element.previousSibling.previousSibling.value;
+            let contador=element.previousSibling.previousSibling;
+            if(parseInt(element.value)>parseInt(contador.value)){
+                element.classList.add('rojo');
+                console.log(element.value+"/"+contador.value);
+            }
+            else{
+                element.classList.remove('rojo');
+                console.log(element.value+"/"+contador.value);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
